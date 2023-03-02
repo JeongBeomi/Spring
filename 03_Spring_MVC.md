@@ -40,4 +40,33 @@
   ![image](https://user-images.githubusercontent.com/109258397/222217466-1ddfc14f-6481-4985-9ddf-8b3bfe5e5a95.png)
   - 효율적인 리소스 관리
     - 정적 리소스가 많이 사용 -> Web 서버 증설 / 애플리케이션 리소스 -> WAS 증설
-  - 정적 리소스만 제공하는 웹서는 잘 죽지 않음, WAS
+  - 정적 리소스만 제공하는 웹서는 잘 죽지 않음, 애플리케이션 로직이 동작하는 WAS서버는 잘죽음
+  - WAS, DB 장애시 WEB 서버가 오류 화면 제공 가능
+
+## 2. 서블릿
+
+### 2-1. HTML Form 데이터 전송
+- POST전송 - 저장
+  ![image](https://user-images.githubusercontent.com/109258397/222297876-c9287bfc-e096-464a-a3e7-87f2172cd2a9.png)
+- 의미있는 비즈니스 로직 전에 과정이 너무 중복, 길다 ->  서블릿의 등장
+  ![image](https://user-images.githubusercontent.com/109258397/222298308-d5f6b611-0d15-4177-a1a7-34524d516920.png)
+- 서블릿 특징
+  ![image](https://user-images.githubusercontent.com/109258397/222298559-f7dcc2b8-d00b-47f4-b5e2-420ecf008cf6.png)
+- HTTP 요청, 응답 흐름
+  - HTTP 요청시
+    - WAS는 Request, Response 객체를 새로 만들어 서블릿 객체 호출
+    - 개발자는 Request 객체에서 HTTP 요청 정보를 편리하게 꺼내서 사용
+    - 개발자는 Response 객체에 HTTP 응답 정보를 편리하게 입력
+    - WAS는 Response 객체에 담겨있는 내용으로 HTTP 응답 정보를 생성
+  ![image](https://user-images.githubusercontent.com/109258397/222299466-45a87fd9-1132-4248-b9d9-a6d58d5e96cd.png)
+
+### 2-2. 서블릿 컨테이너
+- 톰캣처럼 서블릿을 지원하는 WAS를 서블릿 컨테이너라고함
+- 서블릿 컨테이너는 서블릿 객체를 생성, 초기화, 호출, 종료 생명주기 관리
+- 서블릿 객체는 싱글톤으로 관리(하나의 객체만 만들어 재사용)
+  - 고객의 요청시 계속 객체 생성은 비효율
+  - 최초 로딩시 서블릿 객체를 미리 만들어두고 재활용
+  - **공유 변수 사용 주의**
+  - 서블릿 컨테이너 종료시 함께 종료
+- JSP도 서블릿으로 변환되어 사용
+- 동시 요청을 위한 멀티 쓰레드 처리 지원
