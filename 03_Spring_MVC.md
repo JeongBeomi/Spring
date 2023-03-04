@@ -127,3 +127,33 @@
   - 개발자가 멀티 쓰레드 관련 코드 신경x
   - 개발자는 싱글 쓰레드 프로그래밍을 하듯이 편리하게 개발
   - 멀티 쓰레드 환경이므로 싱글톤 객체(서블릿, 스프링 빈)는 주의해서 사용
+
+## 3. HTML, HTTP API, CSR, SSR
+### 3-1. HTML페이지
+- 동적으로 필요한 HTML파일 생성,  전달 / 웹브라우저 : HTML 해석
+  ![image](https://user-images.githubusercontent.com/109258397/222916994-809a8b47-dd12-42cd-b7df-82f68beb72d7.png)
+
+### 3-2. HTTP API
+- HTML x, 데이터를 전달 / UI화면이 필요하면 클라이언트가 별도 처리
+- 주로 JSON형식 사용
+- 다양한 시스템에서 호출
+- 앱, 웹 클라이언트, 서버 to 서버
+  ![image](https://user-images.githubusercontent.com/109258397/222917400-e6702e4c-a1c3-4b93-ae4c-a7044bb46b9c.png)
+- UI 클라이언트 접점
+  - 앱 클라이언트(아이폰, 안드로이드, PC 앱)
+  - 웹 브라우저에서 자바스크립트를 통한 HTTP API호출
+  - React, Vue.js 같은 웹 클라이언트
+- 서버 to 서버
+  - 주문 서버 -> 결제 서버
+  - 기업간 데이터 통신
+
+### 3-3. 서버사이드 렌더링, 클라이언트 사이드 렌더링
+- SSR : 서버 사이드 렌더링, HTML 최종결과를 서버에서 만들어 웹 브라우저에게 전달
+  ![image](https://user-images.githubusercontent.com/109258397/222917805-77914289-49e9-453f-98fe-7a06299c9877.png)
+  - 주로 정적인 화면에 사용
+  - 관련기술 : JSP, 타임리프 -> 백엔드 개발자
+- CSR  : 클라이언트 사이드 렌더링, HTML결과를 자바스크립트를 사용 웹 브라우저에서 동적으로 생성해서 적용
+  ![image](https://user-images.githubusercontent.com/109258397/222918372-ffeabf2f-1a09-4ded-87a2-169554ca5e51.png)
+  - 주로 동적인 화면에 사용, 웹 환경을 마치 앱처럼 필요한 부분부분 변경가능
+  - ex_ 구글지도, Gmail, 구글 캘린더
+  - 관련기술 : React, Vue.js -> 웹 프론트엔드 개발자
